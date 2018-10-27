@@ -9,7 +9,7 @@ app.config['DEBUG'] = True
 def index():
     return render_template('user_signup.html', title="User Signup")
 
-@app.route("/user-signup", methods=['POST'])
+@app.route("/user-signup", methods=['POST', 'GET'])
 def user_signup():
     username = request.form['username']
     password = request.form['password']
@@ -24,7 +24,11 @@ def user_signup():
     if valid_username == True and valid_password == True and match_password == True and valid_email == True:
         return render_template('welcome.html', username=username)
     else:
-        return render_template('user_signup.html', valid_username=valid_username, valid_password=valid_password, match_password=match_password, valid_email=valid_email)
+        if valid_username == False:
+            username = ''
+        if valid_email == False:
+            email = ''
+        return render_template('user_signup.html', username = username, valid_username=valid_username, valid_password=valid_password, match_password=match_password, email = email, valid_email=valid_email)
 
 
 def validate_username(username):

@@ -3,29 +3,37 @@
 {% block content %}
 
 <form action="/user-signup", method="post">
+    <div>
     <label for="username">Username: </label>
-    <input id="username" type="text" name="username" />
+    <input id="username" type="text" name="username" value="{{username}}" />
     {% if valid_username == False %}
-    <p class="error">The username provided is not valid.</p>
+    <span class="error">The username provided is not valid.</span>
     {% endif %}
+    </div>
     <br>
+    <div>
     <label for="password">Password: </label>
     <input id="password" type="password" name="password" />
     {% if valid_password == False %}
-    <p class="error">The password provided is not valid.</p>
+    <span class="error">The password provided is not valid.</span>
     {% endif %}
+    </div>
     <br>
+    <div>
     <label for="confirm-password">Confirm Password: </label>
-    <input id="confirm-password" type="password" name="confirm-password" />
+    <input id="confirm-password" type="password" name="confirm-password"  />
     {% if match_password == False %}
-    <p class="error">The passwords provided do not match.</p>
+    <span class="error">The passwords provided do not match.</span>
     {% endif %}
+    </div>
     <br>
+    <div>
     <label for="email">E-mail Address</label>
-    <input id="email" type="text" name="email" />
+    <input id="email" type="text" name="email" value="{{email}}" />
     {% if valid_email == False %}
-    <p class="error">The E-mail provided is not valid.</p>
+    <span class="error">The E-mail provided is not valid.</span>
     {% endif %}
+    </div>
     <br>
     <input type="submit" />
 
